@@ -13,17 +13,16 @@
     <None Remove="Models\" />
     <None Remove="Services\" />
     <None Remove="Services\Interfaces\" />
+    <None Remove="GoSolve.HttpClients.Dummy.Review" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="GoSolve.HttpClients.Dummy.Review" Version="0.0.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MappingProfiles\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Clients\HttpClients.Dummy.Review\HttpClients.Dummy.Review.csproj" />
   </ItemGroup>
 </Project>
