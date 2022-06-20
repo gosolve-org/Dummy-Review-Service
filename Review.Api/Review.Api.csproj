@@ -12,9 +12,12 @@
   <ItemGroup>
     <None Remove="Controllers\" />
     <None Remove="GoSolve.Tools.Api" />
+    <None Remove="MappingProfiles\" />
+    <None Remove="GoSolve.HttpClients.Dummy.Review" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="MappingProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Review.Api.Business\Review.Api.Business.csproj">
@@ -26,5 +29,6 @@
       <IncludeAssets>All</IncludeAssets>
       <PrivateAssets>None</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="GoSolve.HttpClients.Dummy.Review" Version="0.0.2" />
   </ItemGroup>
 </Project>

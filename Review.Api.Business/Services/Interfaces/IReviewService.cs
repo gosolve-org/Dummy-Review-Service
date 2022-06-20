@@ -1,14 +1,12 @@
-﻿using GoSolve.HttpClients.Dummy.Review.Contracts;
-
-namespace GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
+﻿namespace GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
 
 public interface IReviewService
 {
-    Task<IEnumerable<ReviewResponse>> GetReviews(string author);
+    Task<IEnumerable<Models.Review>> GetReviews(string author);
 
-    Task<ReviewResponse> GetReviewById(int reviewId);
+    Task<Models.Review> GetReviewById(int reviewId);
 
-    Task<IEnumerable<ReviewResponse>> GetReviewsForBook(int bookId);
+    Task<IEnumerable<Models.Review>> GetReviewsForBook(int bookId);
 
-    Task<ReviewResponse> AddReview(ReviewRequest reviewRequest);
+    Task<Models.Review> AddReview(Models.Review reviewRequest);
 }

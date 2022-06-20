@@ -1,6 +1,6 @@
-﻿using GoSolve.Dummy.Review.Api.Business.MappingProfiles;
-using GoSolve.Dummy.Review.Api.Business.Services;
+﻿using GoSolve.Dummy.Review.Api.Business.Services;
 using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
+using GoSolve.Dummy.Review.Api.MappingProfiles;
 using GoSolve.Tools.Api.ExtensionMethods;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
-using GoSolve.HttpClients.Dummy.Review.Contracts;
 
 namespace GoSolve.Dummy.Review.Api.Business.Services
 {
@@ -20,35 +19,35 @@ namespace GoSolve.Dummy.Review.Api.Business.Services
             _mapper = mapper;
         }
 
-        public async Task<ReviewResponse> AddReview(ReviewRequest reviewRequest)
+        public Task<Models.Review> AddReview(Models.Review reviewRequest)
         {
             var review = _mapper.Map<Models.Review>(reviewRequest);
             review.Id = 201;
-            return _mapper.Map<ReviewResponse>(review);
+            return Task.FromResult(review);
         }
 
-        public async Task<ReviewResponse> GetReviewById(int reviewId)
+        public Task<Models.Review> GetReviewById(int reviewId)
         {
             var review = _reviewDb.FirstOrDefault(review => review.Id == reviewId);
             if (review == null) return null;
 
-            return _mapper.Map<ReviewResponse>(review);
+            return Task.FromResult(review);
         }
 
-        public async Task<IEnumerable<ReviewResponse>> GetReviews(string author)
+        public Task<IEnumerable<Models.Review>> GetReviews(string author)
         {
             var reviews = _reviewDb
                 .Where(review => string.Equals(review.Author, author, StringComparison.CurrentCultureIgnoreCase));
 
-            return _mapper.Map<IEnumerable<ReviewResponse>>(reviews);
+            return Task.FromResult(reviews);
         }
 
-        public async Task<IEnumerable<ReviewResponse>> GetReviewsForBook(int bookId)
+        public Task<IEnumerable<Models.Review>> GetReviewsForBook(int bookId)
         {
             var reviews = _reviewDb
                 .Where(review => review.BookId == bookId);
 
-            return _mapper.Map<IEnumerable<ReviewResponse>>(reviews);
+            return Task.FromResult(reviews);
         }
     }
 }
