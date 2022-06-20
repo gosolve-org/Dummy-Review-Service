@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
 using GoSolve.HttpClients.Dummy.Review.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -11,17 +12,19 @@ namespace GoSolve.Dummy.Review.Api.Controllers;
 public class ReviewController : ControllerBase
 {
     private readonly IReviewService _reviewService;
+    private readonly IMapper _mapper;
 
-    public ReviewController(IReviewService reviewService)
+    public ReviewController(IReviewService reviewService, IMapper mapper)
     {
         _reviewService = reviewService;
+        _mapper = mapper;
     }
 
     [HttpGet("reviews")]
     public async Task<IActionResult> GetReviews([FromQuery] [Required] string author)
     {
         if (string.IsNullOrWhiteSpace(author)) throw new ArgumentException("Missing required query parameter: author.");
-        return Ok(await _reviewService.GetReviews(author));
+        return Ok(_mapper.Map<IEnumerable<ReviewResponse>>(await _reviewService.GetReviews(author)));
     }
 
     [HttpGet("reviews/{reviewId}")]
@@ -30,19 +33,20 @@ public class ReviewController : ControllerBase
         var review = await _reviewService.GetReviewById(reviewId);
         if (review == null) return NotFound();
 
-        return Ok(review);
+        return Ok(_mapper.Map<ReviewResponse>(review));
     }
 
     [HttpGet("books/{bookId}/reviews")]
     public async Task<IActionResult> GetReviewsForBook(int bookId)
     {
-        return Ok(await _reviewService.GetReviewsForBook(bookId));
+        return Ok(_mapper.Map<IEnumerable<ReviewResponse>>(await _reviewService.GetReviewsForBook(bookId)));
     }
 
     [HttpPost("reviews")]
-    public IActionResult AddReview(ReviewRequest reviewRequest)
+    public async Task<IActionResult> AddReview(ReviewRequest reviewRequest)
     {
-        var reviewResponse = _reviewService.AddReview(reviewRequest);
+        var review = _mapper.Map<Business.Models.Review>(reviewRequest);
+        var reviewResponse = _mapper.Map<ReviewResponse>(await _reviewService.AddReview(review));
         return CreatedAtAction(nameof(GetReviewById), new { reviewId = reviewResponse.Id }, reviewResponse);
     }
 }
