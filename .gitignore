@@ -1,4 +1,5 @@
 .editorconfig
+nuget.config
 
 # globs
 Makefile.in

@@ -13,18 +13,22 @@
     <None Remove="Services\" />
     <None Remove="Services\Interfaces\" />
     <None Remove="GoSolve.HttpClients.Dummy.Review" />
-    <None Remove="GoSolve.Tools.Common" />
+    <None Remove="MappingProfiles\" />
+    <None Remove="ExtensionMethods\" />
+    <None Remove="Microsoft.AspNetCore.JsonPatch" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-    <PackageReference Include="GoSolve.Tools.Common" Version="0.0.3">
-      <IncludeAssets>All</IncludeAssets>
-      <PrivateAssets>None</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="6.0.8" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
+    <Folder Include="MappingProfiles\" />
+    <Folder Include="ExtensionMethods\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Review.Api.Data\Review.Api.Data.csproj" />
   </ItemGroup>
 </Project>

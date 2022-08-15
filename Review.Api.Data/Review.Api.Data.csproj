@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <RootNamespace>GoSolve.Dummy.Review.Api.Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="ExtensionMethods\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <None Remove="GoSolve.Tools.Common" />
+    <None Remove="ExtensionMethods\" />
+    <None Remove="GoSolve.Tools.Api" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.5" />
+  </ItemGroup>
+</Project>

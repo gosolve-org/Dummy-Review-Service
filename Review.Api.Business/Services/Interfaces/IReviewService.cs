@@ -1,12 +1,20 @@
-﻿namespace GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
+﻿using Microsoft.AspNetCore.JsonPatch;
+
+namespace GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
 
 public interface IReviewService
 {
-    Task<IEnumerable<Models.Review>> GetReviews(string author);
+    Task<IEnumerable<Models.Review>> GetByAuthor(string author);
 
-    Task<Models.Review> GetReviewById(int reviewId);
+    Task<Models.Review> GetById(long id);
 
-    Task<IEnumerable<Models.Review>> GetReviewsForBook(int bookId);
+    Task<IEnumerable<Models.Review>> GetByBookId(long bookId);
 
-    Task<Models.Review> AddReview(Models.Review reviewRequest);
+    Task<Models.Review> Add(Models.Review review);
+
+    Task Update(Models.Review review);
+
+    Task Patch(long id, JsonPatchDocument<Models.Review> patchDoc);
+
+    Task DeleteById(long id);
 }
