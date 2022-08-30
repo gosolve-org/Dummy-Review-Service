@@ -46,10 +46,8 @@ public class ReviewService : IReviewService
 
     public async Task<Models.Review> Add(Models.Review review)
     {
-        // TODO: Add validation that review does not exist yet for author and book
         // TODO: (not relevant to this scope) Add volume to docker-compose for live reload (& debugging??)
         // TODO: (not relevant to this scope) Add seed scripts for db (db gets reset on docker compose start, what are the conventions for this? -> research)
-        // TODO: Reset migration for int -> long ids
         var reviewEntity = _mapper.Map<Data.Models.Review>(review);
         reviewEntity.CreatedAt = DateTime.UtcNow;
         reviewEntity.UpdatedAt = DateTime.UtcNow;

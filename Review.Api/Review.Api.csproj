@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <RootNamespace>GoSolve.Dummy.Review.Api</RootNamespace>
+    <UserSecretsId>5786ab7f-d134-4326-af9c-5e54f9a3f4ab</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'api_dummy_review' " />
@@ -20,14 +21,14 @@
     <Folder Include="MappingProfiles\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Review.Api.Business\Review.Api.Business.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
     <ProjectReference Include="..\Review.Api.Data\Review.Api.Data.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\..\clients\HttpClients.Dummy.Review\HttpClients.Dummy.Review.csproj">
+    <ProjectReference Include="..\Review.Api.Business\Review.Api.Business.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GoSolve.HttpClients.Dummy.Review" Version="0.0.6" />
   </ItemGroup>
 </Project>

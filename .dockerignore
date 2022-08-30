@@ -1,8 +1,8 @@
 # .dockerignore
 
-Dockerfile
+#Dockerfile
 [b|B]in
 [O|o]bj
+.git
 .github
 .vscode
-nuget.config.example

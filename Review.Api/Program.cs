@@ -6,6 +6,7 @@ using GoSolve.Dummy.Review.Api.Data.Repositories;
 using GoSolve.Dummy.Review.Api.MappingProfiles;
 using GoSolve.Tools.Api.ExtensionMethods;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
