@@ -1,0 +1,35 @@
+networks:
+  dockerapi-dev:
+    driver: bridge
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    depends_on:
+      - db
+    networks:
+      - dockerapi-dev
+    volumes:
+      - ./:/app
+      - ~/.aspnet/https:/https:ro
+      - ~/.microsoft/usersecrets/:/root/.microsoft/usersecrets:ro
+    environment:
+      - "ConnectionStrings:dbConnection=User ID =admin;Password=admin;Server=db;Port=5432;Database=dev-db;Integrated Security=true;Pooling=true;"
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/review-api.pfx
+
+  db:
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: "dev-db"
+    networks:
+      - dockerapi-dev

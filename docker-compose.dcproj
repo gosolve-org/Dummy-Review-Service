@@ -1,0 +1,16 @@
+﻿
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk" DefaultTargets="Build">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <ProjectGuid>{98FC77DF-9625-4046-A686-58C1E8514E38}</ProjectGuid>
+    <DockerLaunchBrowser>false</DockerLaunchBrowser>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
+    <DockerServiceName>Review.Api</DockerServiceName>
+    <UserSecretsId>55eb90a9-4899-482d-8fa8-c6d97f04d9d1</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="docker-compose.yml" />
+    <None Include=".dockerignore" />
+  </ItemGroup>
+</Project>

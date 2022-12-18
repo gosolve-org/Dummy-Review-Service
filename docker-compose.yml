@@ -1,35 +1,29 @@
-networks:
-  dockerapi-dev:
-    driver: bridge
+version: '3.5'
 
 services:
-  api:
+  review.api:
+    image: ${DOCKER_REGISTRY-}review-api
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Review.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/local-cert.pem
+      - "ConnectionStrings__DbConnection=User ID =postgres;Password=postgres;Server=gos-db;Port=5432;Database=review;Integrated Security=true;Pooling=true;"
     ports:
-      - "5000:5000"
-      - "5001:5001"
-    depends_on:
-      - db
-    networks:
-      - dockerapi-dev
+      - "80"
     volumes:
-      - ./:/app
-      - ~/.aspnet/https:/https:ro
-      - ~/.microsoft/usersecrets/:/root/.microsoft/usersecrets:ro
-    environment:
-      - "ConnectionStrings:dbConnection=User ID =admin;Password=admin;Server=db;Port=5432;Database=dev-db;Integrated Security=true;Pooling=true;"
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/review-api.pfx
-
-  db:
-    image: postgres:14
-    ports:
-      - "5432:5432"
-    restart: always
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: "dev-db"
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ./certs:/https:ro
     networks:
-      - dockerapi-dev
+      - gos-net
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.review-api-secure.rule: 'PathPrefix(`/review-api`)'
+      traefik.http.routers.review-api-secure.entrypoints: 'https'
+      traefik.http.routers.review-api-secure.tls: 'true'
+      traefik.docker.network: 'gos-net'
+networks:
+  gos-net:
+    external: true
