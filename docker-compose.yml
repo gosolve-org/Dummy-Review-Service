@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+  review.api:
+    image: ${DOCKER_REGISTRY-}review-api
+    build:
+      context: .
+      dockerfile: Review.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/local-cert.pem
+      - "ConnectionStrings__DbConnection=User ID =postgres;Password=postgres;Server=gos-db;Port=5432;Database=review;Integrated Security=true;Pooling=true;"
+    ports:
+      - "80"
+    volumes:
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ./certs:/https:ro
+    networks:
+      - gos-net
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.review-api-secure.rule: 'PathPrefix(`/review-api`)'
+      traefik.http.routers.review-api-secure.entrypoints: 'https'
+      traefik.http.routers.review-api-secure.tls: 'true'
+      traefik.docker.network: 'gos-net'
+networks:
+  gos-net:
+    external: true

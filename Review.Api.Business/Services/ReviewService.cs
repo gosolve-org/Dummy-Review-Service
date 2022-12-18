@@ -1,53 +1,95 @@
 ﻿using AutoMapper;
 using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
+using GoSolve.Dummy.Review.Api.Data;
+using GoSolve.Dummy.Review.Api.Data.Repositories;
+using GoSolve.Tools.Api.Database.Models;
+using GoSolve.Tools.Common.Exceptions;
+using Microsoft.AspNetCore.JsonPatch;
 
-namespace GoSolve.Dummy.Review.Api.Business.Services
+namespace GoSolve.Dummy.Review.Api.Business.Services;
+
+public class ReviewService : IReviewService
 {
-    public class ReviewService : IReviewService
+    private IMapper _mapper;
+    private IUnitOfWork _unitOfWork;
+    private IReviewRepository _reviewRepository;
+
+    public ReviewService(IMapper mapper, IUnitOfWork unitOfWork, IReviewRepository reviewRepository)
     {
-        private IMapper _mapper;
+        _mapper = mapper;
+        _unitOfWork = unitOfWork;
+        _reviewRepository = reviewRepository;
+    }
 
-        private Models.Review[] _reviewDb = new Models.Review[]
-        {
-            new Models.Review { Id = 0, BookId = 0, Author = "Bob Anderson", Rating = 5, Comment = "Amazing!" },
-            new Models.Review { Id = 1, BookId = 0, Author = "Alice", Rating = 4, Comment = "Good book!" },
-            new Models.Review { Id = 2, BookId = 1, Author = "Bob Anderson", Rating = 2, Comment = "Did not like it." },
-        };
+    public async Task<Models.Review> GetById(long id)
+    {
+        var review = await _reviewRepository.GetById(id);
+        if (review == null) return null;
 
-        public ReviewService(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
+        return _mapper.Map<Models.Review>(review);
+    }
 
-        public Task<Models.Review> AddReview(Models.Review reviewRequest)
-        {
-            var review = _mapper.Map<Models.Review>(reviewRequest);
-            review.Id = 201;
-            return Task.FromResult(review);
-        }
+    public async Task<IEnumerable<Models.Review>> GetByAuthor(string author)
+    {
+        var reviews = await _reviewRepository
+            .Find(review => review.Author.ToLower() == author.ToLower());
 
-        public Task<Models.Review> GetReviewById(int reviewId)
-        {
-            var review = _reviewDb.FirstOrDefault(review => review.Id == reviewId);
-            if (review == null) return null;
+        return _mapper.Map<IEnumerable<Models.Review>>(reviews);
+    }
 
-            return Task.FromResult(review);
-        }
+    public async Task<IEnumerable<Models.Review>> GetByBookId(long bookId)
+    {
+        var reviews = await _reviewRepository.Find(review => review.BookId == bookId);
 
-        public Task<IEnumerable<Models.Review>> GetReviews(string author)
-        {
-            var reviews = _reviewDb
-                .Where(review => string.Equals(review.Author, author, StringComparison.CurrentCultureIgnoreCase));
+        return _mapper.Map<IEnumerable<Models.Review>>(reviews);
+    }
 
-            return Task.FromResult(reviews);
-        }
+    public async Task<Models.Review> Add(Models.Review review)
+    {
+        // TODO: (not relevant to this scope) Add volume to docker-compose for live reload (& debugging??)
+        // TODO: (not relevant to this scope) Add seed scripts for db (db gets reset on docker compose start, what are the conventions for this? -> research)
+        var reviewEntity = _mapper.Map<Data.Models.Review>(review);
+        reviewEntity.CreatedAt = DateTime.UtcNow;
+        reviewEntity.UpdatedAt = DateTime.UtcNow;
 
-        public Task<IEnumerable<Models.Review>> GetReviewsForBook(int bookId)
-        {
-            var reviews = _reviewDb
-                .Where(review => review.BookId == bookId);
+        _reviewRepository.Add(reviewEntity);
 
-            return Task.FromResult(reviews);
-        }
+        await _unitOfWork.CompleteAsync();
+
+        return _mapper.Map<Models.Review>(reviewEntity);
+    }
+
+    public async Task Update(Models.Review review)
+    {
+        var reviewEntity = await _reviewRepository.GetById(review.Id);
+        if (reviewEntity == null) throw new NotFoundException($"Review with id {review.Id} does not exist.");
+        reviewEntity.Author = review.Author;
+        reviewEntity.BookId = review.BookId;
+        reviewEntity.Comment = review.Comment;
+        reviewEntity.Rating = review.Rating;
+
+        await _unitOfWork.CompleteAsync();
+    }
+
+    public async Task Patch(long id, JsonPatchDocument<Models.Review> patchDoc)
+    {
+        var reviewEntity = await _reviewRepository.GetById(id);
+        if (reviewEntity == null) throw new NotFoundException($"Review with id {id} does not exist.");
+
+        var entityPatchDoc = _mapper.Map<JsonPatchDocument<Data.Models.Review>>(patchDoc);
+
+        entityPatchDoc.ApplyTo(reviewEntity);
+
+        await _unitOfWork.CompleteAsync();
+    }
+
+    public async Task DeleteById(long id)
+    {
+        var reviewEntity = await _reviewRepository.GetById(id);
+        if (reviewEntity == null) throw new NotFoundException($"Review with id {id} does not exist.");
+
+        _reviewRepository.Remove(reviewEntity);
+
+        await _unitOfWork.CompleteAsync();
     }
 }

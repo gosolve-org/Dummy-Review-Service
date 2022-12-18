@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AutoMapper;
+﻿using AutoMapper;
 using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
 using GoSolve.HttpClients.Dummy.Review.Contracts;
+using GoSolve.Tools.Common.Exceptions;
+using GoSolve.Tools.Api.ExtensionMethods;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace GoSolve.Dummy.Review.Api.Controllers;
 
@@ -21,16 +24,16 @@ public class ReviewController : ControllerBase
     }
 
     [HttpGet("reviews")]
-    public async Task<IActionResult> GetReviews([FromQuery] [Required] string author)
+    public async Task<IActionResult> GetReviews([FromQuery][Required] string author)
     {
         if (string.IsNullOrWhiteSpace(author)) throw new ArgumentException("Missing required query parameter: author.");
-        return Ok(_mapper.Map<IEnumerable<ReviewResponse>>(await _reviewService.GetReviews(author)));
+        return Ok(_mapper.Map<IEnumerable<ReviewResponse>>(await _reviewService.GetByAuthor(author)));
     }
 
-    [HttpGet("reviews/{reviewId}")]
-    public async Task<IActionResult> GetReviewById(int reviewId)
+    [HttpGet("reviews/{id}")]
+    public async Task<IActionResult> GetReviewById(int id)
     {
-        var review = await _reviewService.GetReviewById(reviewId);
+        var review = await _reviewService.GetById(id);
         if (review == null) return NotFound();
 
         return Ok(_mapper.Map<ReviewResponse>(review));
@@ -39,14 +42,51 @@ public class ReviewController : ControllerBase
     [HttpGet("books/{bookId}/reviews")]
     public async Task<IActionResult> GetReviewsForBook(int bookId)
     {
-        return Ok(_mapper.Map<IEnumerable<ReviewResponse>>(await _reviewService.GetReviewsForBook(bookId)));
+        return Ok(_mapper.Map<IEnumerable<ReviewResponse>>(await _reviewService.GetByBookId(bookId)));
     }
 
     [HttpPost("reviews")]
-    public async Task<IActionResult> AddReview(ReviewRequest reviewRequest)
+    public async Task<IActionResult> AddReview(ReviewPostRequest reviewRequest)
     {
         var review = _mapper.Map<Business.Models.Review>(reviewRequest);
-        var reviewResponse = _mapper.Map<ReviewResponse>(await _reviewService.AddReview(review));
-        return CreatedAtAction(nameof(GetReviewById), new { reviewId = reviewResponse.Id }, reviewResponse);
+        var reviewResponse = _mapper.Map<ReviewResponse>(await _reviewService.Add(review));
+        return CreatedAtAction(nameof(GetReviewById), new { id = reviewResponse.Id }, reviewResponse);
+    }
+
+    [HttpPut("reviews/{id}")]
+    public async Task<IActionResult> UpdateReview(long id, ReviewPutRequest reviewRequest)
+    {
+        if (id != reviewRequest.Id)
+        {
+            throw new ArgumentException("You can not change the id of a review.");
+        }
+
+        var review = _mapper.Map<Business.Models.Review>(reviewRequest);
+        await _reviewService.Update(review);
+
+        return NoContent();
+    }
+
+    [HttpDelete("reviews/{id}")]
+    public async Task<IActionResult> DeleteReview(long id)
+    {
+        await _reviewService.DeleteById(id);
+
+        return NoContent();
+    }
+
+    [HttpPatch("reviews/{id}")]
+    public async Task<IActionResult> PatchReview(long id, [FromBody] JsonPatchDocument<ReviewPatchRequest> patchDoc)
+    {
+        var review = await _reviewService.GetById(id);
+        if (review == null) return NotFound();
+        if (!patchDoc.ApplyAndValidate(this, _mapper.Map<ReviewPatchRequest>(review)))
+        {
+            return ValidationProblem();
+        }
+
+        await _reviewService.Patch(id, _mapper.Map<JsonPatchDocument<Business.Models.Review>>(patchDoc));
+
+        return NoContent();
     }
 }

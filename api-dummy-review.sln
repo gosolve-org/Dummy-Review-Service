@@ -11,6 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8B7C8105
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Review.Api.Business", "Review.Api.Business\Review.Api.Business.csproj", "{1750E8E2-8FD1-496B-8101-FBCFF8DD8E9A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1828F074-A9E7-44FB-A382-A9FF4D6FB6AB}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Review.Api.Data", "Review.Api.Data\Review.Api.Data.csproj", "{3EF4166A-A334-4326-95D5-F69FCF794E07}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{98FC77DF-9625-4046-A686-58C1E8514E38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +34,14 @@ Global
 		{1750E8E2-8FD1-496B-8101-FBCFF8DD8E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1750E8E2-8FD1-496B-8101-FBCFF8DD8E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1750E8E2-8FD1-496B-8101-FBCFF8DD8E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EF4166A-A334-4326-95D5-F69FCF794E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EF4166A-A334-4326-95D5-F69FCF794E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF4166A-A334-4326-95D5-F69FCF794E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EF4166A-A334-4326-95D5-F69FCF794E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FC77DF-9625-4046-A686-58C1E8514E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FC77DF-9625-4046-A686-58C1E8514E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FC77DF-9625-4046-A686-58C1E8514E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FC77DF-9625-4046-A686-58C1E8514E38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +52,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{134B11CC-280B-4FF3-B232-F128E4F811F3} = {3D8FE7A3-3010-4714-ADA6-72ECA64745BD}
 		{1750E8E2-8FD1-496B-8101-FBCFF8DD8E9A} = {3D8FE7A3-3010-4714-ADA6-72ECA64745BD}
+		{3EF4166A-A334-4326-95D5-F69FCF794E07} = {3D8FE7A3-3010-4714-ADA6-72ECA64745BD}
 	EndGlobalSection
 EndGlobal
