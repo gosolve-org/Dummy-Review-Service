@@ -24,6 +24,6 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build api-dummy-review.sln Review.Api.Tests --configuration Release --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test api-dummy-review.sln --no-restore --verbosity normal --no-build
