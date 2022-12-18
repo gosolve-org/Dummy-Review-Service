@@ -5,6 +5,7 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <RootNamespace>GoSolve.Dummy.Review.Api</RootNamespace>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>5786ab7f-d134-4326-af9c-5e54f9a3f4ab</UserSecretsId>
   </PropertyGroup>
 
