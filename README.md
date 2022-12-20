@@ -19,7 +19,9 @@ cp -a ~/.dev/gosolve/certs/. ./certs/
 | Visual Studio (easiest)   | Run the docker-compose project in Visual Studio. (This also enables debugging features.) |
 | Terminal | Run `docker-compose up` in a terminal in the project directory. |  
 
-:x: On errors, try removing your /obj and /bin folders. 
+Your API will be available at `https://localhost:5001/review-api`.
+
+> :warning: **On errors:** Try removing your /obj and /bin folders. 
 
 ## License
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)  
