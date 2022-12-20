@@ -1,7 +1,7 @@
 .editorconfig
 nuget.config
 certs/*
-.gitkeep
+!.gitkeep
 
 # globs
 Makefile.in
