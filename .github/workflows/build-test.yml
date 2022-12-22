@@ -22,8 +22,8 @@ jobs:
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Install dependencies
-        run: dotnet restore api-dummy-review.sln
+        run: dotnet restore dummy-review.sln
       - name: Build
-        run: dotnet build api-dummy-review.sln --configuration Release --no-restore
+        run: dotnet build dummy-review.sln --configuration Release --no-restore
       - name: Test
-        run: dotnet test api-dummy-review.sln --no-restore --verbosity normal --no-build
+        run: dotnet test dummy-review.sln --no-restore --verbosity normal --no-build
