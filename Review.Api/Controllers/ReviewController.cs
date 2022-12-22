@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
+using GoSolve.Dummy.Review.Business.Services.Interfaces;
 using GoSolve.HttpClients.Dummy.Review.Contracts;
 using GoSolve.Tools.Common.Exceptions;
 using GoSolve.Tools.Api.ExtensionMethods;

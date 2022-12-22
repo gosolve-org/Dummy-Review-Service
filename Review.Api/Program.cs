@@ -1,8 +1,8 @@
-﻿using GoSolve.Dummy.Review.Api.Business.ExtensionMethods;
-using GoSolve.Dummy.Review.Api.Business.Services;
-using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
-using GoSolve.Dummy.Review.Api.Data;
-using GoSolve.Dummy.Review.Api.Data.Repositories;
+﻿using GoSolve.Dummy.Review.Business.ExtensionMethods;
+using GoSolve.Dummy.Review.Business.Services;
+using GoSolve.Dummy.Review.Business.Services.Interfaces;
+using GoSolve.Dummy.Review.Data;
+using GoSolve.Dummy.Review.Data.Repositories;
 using GoSolve.Dummy.Review.Api.MappingProfiles;
 using GoSolve.Tools.Api.ExtensionMethods;
 using Microsoft.EntityFrameworkCore;

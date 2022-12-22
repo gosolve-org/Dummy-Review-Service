@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
-    <RootNamespace>GoSolve.Dummy.Review.Api.Business</RootNamespace>
+    <RootNamespace>GoSolve.Dummy.Review.Business</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +29,6 @@
     <Folder Include="ExtensionMethods\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Review.Api.Data\Review.Api.Data.csproj" />
+    <ProjectReference Include="..\Review.Data\Review.Data.csproj" />
   </ItemGroup>
 </Project>

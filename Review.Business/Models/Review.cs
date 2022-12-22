@@ -1,4 +1,4 @@
-﻿namespace GoSolve.Dummy.Review.Api.Business.Models;
+﻿namespace GoSolve.Dummy.Review.Business.Models;
 
 public class Review
 {

@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
-    <RootNamespace>GoSolve.Dummy.Review.Api.Data</RootNamespace>
+    <RootNamespace>GoSolve.Dummy.Review.Data</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

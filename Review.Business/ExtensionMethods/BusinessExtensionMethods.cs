@@ -1,12 +1,12 @@
-﻿using GoSolve.Dummy.Review.Api.Business.MappingProfiles;
-using GoSolve.Dummy.Review.Api.Business.Services;
-using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
-using GoSolve.Dummy.Review.Api.Data.ExtensionMethods;
+﻿using GoSolve.Dummy.Review.Business.MappingProfiles;
+using GoSolve.Dummy.Review.Business.Services;
+using GoSolve.Dummy.Review.Business.Services.Interfaces;
+using GoSolve.Dummy.Review.Data.ExtensionMethods;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoSolve.Dummy.Review.Api.Business.ExtensionMethods;
+namespace GoSolve.Dummy.Review.Business.ExtensionMethods;
 
 public static class BusinessExtensionMethods
 {

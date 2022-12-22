@@ -1,10 +1,10 @@
-﻿using GoSolve.Dummy.Review.Api.Data.Repositories;
+﻿using GoSolve.Dummy.Review.Data.Repositories;
 using GoSolve.Tools.Api.ExtensionMethods;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoSolve.Dummy.Review.Api.Data.ExtensionMethods;
+namespace GoSolve.Dummy.Review.Data.ExtensionMethods;
 
 public static class DataExtensionMethods
 {

@@ -1,7 +1,7 @@
 ﻿using GoSolve.Tools.Api.Database.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoSolve.Dummy.Review.Api.Data;
+namespace GoSolve.Dummy.Review.Data;
 
 public class ReviewDbContext : BaseDbContext<ReviewDbContext>
 {
