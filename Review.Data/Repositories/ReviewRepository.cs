@@ -1,6 +1,4 @@
-﻿using GoSolve.Tools.Api.Database.Repositories;
-
-namespace GoSolve.Dummy.Review.Data.Repositories;
+﻿namespace GoSolve.Dummy.Review.Data.Repositories;
 
 public class ReviewRepository : GenericRepository<Models.Review, long, ReviewDbContext>, IReviewRepository
 {

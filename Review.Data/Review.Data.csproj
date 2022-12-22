@@ -21,6 +21,9 @@
     <None Remove="GoSolve.Tools.Api" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.6" />
+    <PackageReference Include="GoSolve.Tools.Common" Version="0.0.5">
+      <IncludeAssets>All</IncludeAssets>
+      <PrivateAssets>None</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>

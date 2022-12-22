@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
-using GoSolve.Tools.Api.Database.Models;
 
 namespace GoSolve.Dummy.Review.Data.Models;
 

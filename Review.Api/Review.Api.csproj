@@ -31,5 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="GoSolve.HttpClients.Dummy.Review" Version="0.0.6" />
+    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.7" />
   </ItemGroup>
 </Project>

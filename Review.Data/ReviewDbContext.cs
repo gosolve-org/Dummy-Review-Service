@@ -1,4 +1,4 @@
-﻿using GoSolve.Tools.Api.Database.Models;
+﻿using GoSolve.Tools.Common.Database.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoSolve.Dummy.Review.Data;
