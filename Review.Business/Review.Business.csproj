@@ -8,18 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <None Remove="Models\" />
     <None Remove="Services\" />
     <None Remove="Services\Interfaces\" />
-    <None Remove="GoSolve.HttpClients.Dummy.Review" />
     <None Remove="MappingProfiles\" />
     <None Remove="ExtensionMethods\" />
-    <None Remove="Microsoft.AspNetCore.JsonPatch" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="6.0.8" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

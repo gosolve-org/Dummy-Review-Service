@@ -2,7 +2,8 @@
 using GoSolve.Dummy.Review.Business.Services.Interfaces;
 using GoSolve.Dummy.Review.Data;
 using GoSolve.Dummy.Review.Data.Repositories;
-using GoSolve.Tools.Api.Database.Models;
+using GoSolve.Tools.Common.Database.Models;
+using GoSolve.Tools.Common.Database.Models.Interfaces;
 using GoSolve.Tools.Common.Exceptions;
 using Microsoft.AspNetCore.JsonPatch;
 

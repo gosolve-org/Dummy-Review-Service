@@ -15,11 +15,12 @@
     <None Remove="GoSolve.Tools.Api" />
     <None Remove="MappingProfiles\" />
     <None Remove="GoSolve.HttpClients.Dummy.Review" />
-    <None Remove="Microsoft.AspNetCore.JsonPatch" />
+    <None Remove="ExtensionMethods\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="MappingProfiles\" />
+    <Folder Include="ExtensionMethods\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Review.Data\Review.Data.csproj">
@@ -31,6 +32,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="GoSolve.HttpClients.Dummy.Review" Version="0.0.6" />
-    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.7" />
+    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.10" />
   </ItemGroup>
 </Project>
