@@ -11,10 +11,12 @@
     <Folder Include="Models\" />
     <Folder Include="Repositories\" />
     <Folder Include="ExtensionMethods\" />
+    <Folder Include="Repositories\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="GoSolve.Tools.Common" />
     <None Remove="ExtensionMethods\" />
+    <None Remove="Repositories\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="GoSolve.Tools.Common" Version="0.0.7">

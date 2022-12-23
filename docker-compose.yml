@@ -10,7 +10,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/local-cert.pem
-      - "ConnectionStrings__DbConnection=User ID =postgres;Password=postgres;Server=gos-db;Port=5432;Database=review;Integrated Security=true;Pooling=true;"
+      - "ConnectionStrings__DbConnection=User ID =postgres;Password=postgres;Server=gos-db;Port=5432;Database=dummy-review;Integrated Security=true;Pooling=true;"
     ports:
       - "80"
     volumes:

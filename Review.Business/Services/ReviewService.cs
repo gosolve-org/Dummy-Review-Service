@@ -2,6 +2,7 @@
 using GoSolve.Dummy.Review.Business.Services.Interfaces;
 using GoSolve.Dummy.Review.Data;
 using GoSolve.Dummy.Review.Data.Repositories;
+using GoSolve.Dummy.Review.Data.Repositories.Interfaces;
 using GoSolve.Tools.Common.Database.Models;
 using GoSolve.Tools.Common.Database.Models.Interfaces;
 using GoSolve.Tools.Common.Exceptions;
@@ -47,8 +48,6 @@ public class ReviewService : IReviewService
 
     public async Task<Models.Review> Add(Models.Review review)
     {
-        // TODO: (not relevant to this scope) Add volume to docker-compose for live reload (& debugging??)
-        // TODO: (not relevant to this scope) Add seed scripts for db (db gets reset on docker compose start, what are the conventions for this? -> research)
         var reviewEntity = _mapper.Map<Data.Models.Review>(review);
         reviewEntity.CreatedAt = DateTime.UtcNow;
         reviewEntity.UpdatedAt = DateTime.UtcNow;
