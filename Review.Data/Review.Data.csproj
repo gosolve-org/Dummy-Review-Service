@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
-    <RootNamespace>GoSolve.Dummy.Review.Api.Data</RootNamespace>
+    <RootNamespace>GoSolve.Dummy.Review.Data</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,14 +13,13 @@
     <Folder Include="ExtensionMethods\" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
-    <None Remove="Microsoft.EntityFrameworkCore.Design" />
-    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <None Remove="GoSolve.Tools.Common" />
     <None Remove="ExtensionMethods\" />
-    <None Remove="GoSolve.Tools.Api" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.6" />
+    <PackageReference Include="GoSolve.Tools.Common" Version="0.0.7">
+      <IncludeAssets>All</IncludeAssets>
+      <PrivateAssets>None</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>

@@ -15,8 +15,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Review.Api/Review.Api.csproj", "Review.Api/"]
-COPY ["Review.Api.Data/Review.Api.Data.csproj", "Review.Api.Data/"]
-COPY ["Review.Api.Business/Review.Api.Business.csproj", "Review.Api.Business/"]
+COPY ["Review.Data/Review.Data.csproj", "Review.Data/"]
+COPY ["Review.Business/Review.Business.csproj", "Review.Business/"]
 RUN dotnet restore "Review.Api/Review.Api.csproj"
 COPY . .
 WORKDIR "/src/Review.Api"

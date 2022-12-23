@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -15,21 +15,23 @@
     <None Remove="GoSolve.Tools.Api" />
     <None Remove="MappingProfiles\" />
     <None Remove="GoSolve.HttpClients.Dummy.Review" />
-    <None Remove="Microsoft.AspNetCore.JsonPatch" />
+    <None Remove="ExtensionMethods\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="MappingProfiles\" />
+    <Folder Include="ExtensionMethods\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Review.Api.Data\Review.Api.Data.csproj">
+    <ProjectReference Include="..\Review.Data\Review.Data.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\Review.Api.Business\Review.Api.Business.csproj">
+    <ProjectReference Include="..\Review.Business\Review.Business.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="GoSolve.HttpClients.Dummy.Review" Version="0.0.6" />
+    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.10" />
   </ItemGroup>
 </Project>

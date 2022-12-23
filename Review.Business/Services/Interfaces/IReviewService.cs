@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 
-namespace GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
+namespace GoSolve.Dummy.Review.Business.Services.Interfaces;
 
 public interface IReviewService
 {

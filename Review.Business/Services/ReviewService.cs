@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
-using GoSolve.Dummy.Review.Api.Business.Services.Interfaces;
-using GoSolve.Dummy.Review.Api.Data;
-using GoSolve.Dummy.Review.Api.Data.Repositories;
-using GoSolve.Tools.Api.Database.Models;
+using GoSolve.Dummy.Review.Business.Services.Interfaces;
+using GoSolve.Dummy.Review.Data;
+using GoSolve.Dummy.Review.Data.Repositories;
+using GoSolve.Tools.Common.Database.Models;
+using GoSolve.Tools.Common.Database.Models.Interfaces;
 using GoSolve.Tools.Common.Exceptions;
 using Microsoft.AspNetCore.JsonPatch;
 
-namespace GoSolve.Dummy.Review.Api.Business.Services;
+namespace GoSolve.Dummy.Review.Business.Services;
 
 public class ReviewService : IReviewService
 {

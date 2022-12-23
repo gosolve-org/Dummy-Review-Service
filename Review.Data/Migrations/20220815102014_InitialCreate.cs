@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace GoSolve.Dummy.Review.Api.Data.Migrations
+namespace GoSolve.Dummy.Review.Data.Migrations
 {
     public partial class InitialCreate : Migration
     {

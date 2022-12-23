@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using GoSolve.Tools.Api.ExtensionMethods;
+using GoSolve.Tools.Common.ExtensionMethods;
 
-namespace GoSolve.Dummy.Review.Api.Business.MappingProfiles;
+namespace GoSolve.Dummy.Review.Business.MappingProfiles;
 
 public class DtoMappingProfiles : Profile
 {
