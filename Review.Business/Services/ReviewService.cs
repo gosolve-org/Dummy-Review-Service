@@ -64,8 +64,6 @@ public class ReviewService : IReviewService
         }
 
         var reviewEntity = _mapper.Map<Data.Models.Review>(review);
-        reviewEntity.CreatedAt = DateTime.UtcNow; // TODO: Should this be set manually? Doesn't our tooling add this?
-        reviewEntity.UpdatedAt = DateTime.UtcNow; // TODO: Should this be set manually? Doesn't our tooling add this?
 
         _reviewRepository.Add(reviewEntity);
 
