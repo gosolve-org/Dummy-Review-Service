@@ -14,6 +14,7 @@ public static class PipelineExtensionMethods
         services.AddDatabaseTools<ReviewDbContext>(configuration);
 
         services.AddTransient<IReviewRepository, ReviewRepository>();
+        services.AddTransient<IReviewAuthorTypeRepository, ReviewAuthorTypeRepository>();
 
         return services;
     }

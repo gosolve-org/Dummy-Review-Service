@@ -1,4 +1,4 @@
-﻿using GoSolve.Tools.Api.Database.Repositories.Interfaces;
+﻿using GoSolve.Tools.Common.Database.Repositories.Interfaces;
 
 namespace GoSolve.Dummy.Review.Data.Repositories.Interfaces;
 

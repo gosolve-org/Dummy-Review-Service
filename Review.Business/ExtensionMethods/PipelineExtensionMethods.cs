@@ -11,7 +11,7 @@ public static class PipelineExtensionMethods
 {
     public static IServiceCollection AddBusinessLayer(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddAutoMapper(typeof(DtoMappingProfiles));
+        services.AddAutoMapper(typeof(DtoMappingProfile));
 
         services.AddDataLayer(configuration);
 

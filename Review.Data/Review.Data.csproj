@@ -19,7 +19,7 @@
     <None Remove="Repositories\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoSolve.Tools.Common" Version="0.0.7">
+    <PackageReference Include="GoSolve.Tools.Common" Version="0.0.11">
       <IncludeAssets>All</IncludeAssets>
       <PrivateAssets>None</PrivateAssets>
     </PackageReference>

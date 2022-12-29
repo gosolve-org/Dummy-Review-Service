@@ -8,14 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Models\" />
     <None Remove="Services\" />
     <None Remove="Services\Interfaces\" />
     <None Remove="MappingProfiles\" />
     <None Remove="ExtensionMethods\" />
+    <None Remove="GoSolve.Clients.Dummy.Review" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="MappingProfiles\" />
@@ -23,5 +22,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Review.Data\Review.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GoSolve.Clients.Dummy.Review" Version="0.0.9" />
   </ItemGroup>
 </Project>
