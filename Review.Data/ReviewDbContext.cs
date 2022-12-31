@@ -1,5 +1,7 @@
 ﻿using GoSolve.Dummy.Review.Data.Models;
+using GoSolve.Dummy.Review.Data.Seeders;
 using GoSolve.Tools.Common.Database.Models;
+using GoSolve.Tools.Common.ExtensionMethods;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoSolve.Dummy.Review.Data;
@@ -20,10 +22,7 @@ public class ReviewDbContext : BaseDbContext<ReviewDbContext>
             .HasOne(r => r.AuthorType)
             .WithMany();
 
-        modelBuilder.Entity<ReviewAuthorType>()
-            .HasData(
-                new ReviewAuthorType { Id = 1, Type = "Reader" },
-                new ReviewAuthorType { Id = 2, Type = "Publisher" },
-                new ReviewAuthorType { Id = 3, Type = "Official reviewer" });
+        modelBuilder.SeedCoreData(builder =>
+            builder.AddSeeder<ReviewAuthorTypeSeeder>());
     }
 }
