@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using GoSolve.HttpClients.Dummy.Review.Contracts;
+using GoSolve.Clients.Dummy.Review.Contracts.Requests;
+using GoSolve.Clients.Dummy.Review.Contracts.Responses;
 using GoSolve.Tools.Api.ExtensionMethods;
 using GoSolve.Tools.Common.ExtensionMethods;
 
@@ -9,9 +10,6 @@ public class DtoMappingProfile : Profile
 {
     public DtoMappingProfile()
     {
-        CreateMap<Business.Models.Review, ReviewResponse>();
-        CreateMap<ReviewPostRequest, Business.Models.Review>();
-        CreateMap<ReviewPutRequest, Business.Models.Review>();
-        this.CreateJsonPatchMap<ReviewPatchRequest, Business.Models.Review>();
+        CreateMap<ReviewResponse, ReviewPatchRequest>();
     }
 }

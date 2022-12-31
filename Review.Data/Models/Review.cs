@@ -11,4 +11,6 @@ public class Review : BaseEntity<long>
     public string Author { get; set; }
     public int Rating { get; set; }
     public string Comment { get; set; }
+    public int AuthorTypeId { get; set; }
+    public ReviewAuthorType AuthorType { get; set; }
 }

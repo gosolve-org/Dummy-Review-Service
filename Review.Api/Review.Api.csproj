@@ -13,13 +13,13 @@
   <ItemGroup>
     <None Remove="Controllers\" />
     <None Remove="GoSolve.Tools.Api" />
-    <None Remove="MappingProfiles\" />
     <None Remove="GoSolve.HttpClients.Dummy.Review" />
     <None Remove="ExtensionMethods\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="GoSolve.Clients.Dummy.Review" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="MappingProfiles\" />
     <Folder Include="ExtensionMethods\" />
   </ItemGroup>
   <ItemGroup>
@@ -31,7 +31,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoSolve.HttpClients.Dummy.Review" Version="0.0.6" />
-    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.10" />
+    <PackageReference Include="GoSolve.Tools.Api" Version="0.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>

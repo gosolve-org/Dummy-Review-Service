@@ -1,4 +1,5 @@
 ﻿using GoSolve.Dummy.Review.Data.Repositories;
+using GoSolve.Dummy.Review.Data.Repositories.Interfaces;
 using GoSolve.Tools.Common.ExtensionMethods;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ public static class PipelineExtensionMethods
         services.AddDatabaseTools<ReviewDbContext>(configuration);
 
         services.AddTransient<IReviewRepository, ReviewRepository>();
+        services.AddTransient<IReviewAuthorTypeRepository, ReviewAuthorTypeRepository>();
 
         return services;
     }
